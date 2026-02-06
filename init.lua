@@ -24,9 +24,13 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- vim.opt.tabstop = 4 -- size of a hard tab character
--- vim.opt.shiftwidth = 4 -- size of an indentation
--- vim.opt.softtabstop = 4 -- number of spaces a <Tab> counts for in Insert mode
+vim.opt.tabstop = 4 -- size of a hard tab character
+vim.opt.shiftwidth = 4 -- size of an indentation
+vim.opt.softtabstop = 4 -- number of spaces a <Tab> counts for in Insert mode
+vim.opt.expandtab = true
+
+-- lsp popup round borders
+vim.o.winborder = "rounded"
 
 -- Make line numbers default
 vim.o.number = true
@@ -132,6 +136,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
+--
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
@@ -911,6 +916,8 @@ require("lazy").setup({
 			ensure_installed = {
 				"bash",
 				"c",
+				"cpp",
+				"python",
 				"diff",
 				"html",
 				"lua",
@@ -930,7 +937,7 @@ require("lazy").setup({
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = true },
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
